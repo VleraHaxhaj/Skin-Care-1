@@ -12,6 +12,29 @@
         <a href="homepage.html"><i class='bx bx-arrow-back'></i></a>
     </header>
     <div class="wrapper">
+
+        <?php
+        session_start();
+        include_once 'database.php';
+        include_once 'user.php';
+
+        if($_SERVER ['REQUEST_METHOD'] == 'POST'){
+            $db = new Database ();
+            $connection = $db->getConnection();
+            $user = new User($connection) ;
+        
+        $email = $_POST['email'];
+        $password = new $_POST ['password'];
+
+        if($user ->login($email,$password)){
+            header("Location: homepage.php");
+            exit;
+        }else {
+            echo "Invalid login";
+        }
+    }
+        ?>
+
         <h1>Login</h1>
         <div class="input-box">
             <input type="text" placeholder="Enter your email" required>
