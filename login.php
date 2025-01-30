@@ -14,25 +14,28 @@
     <div class="wrapper">
 
         <?php
-        session_start();
-        include_once 'database.php';
-        include_once 'user.php';
-
-        if($_SERVER ['REQUEST_METHOD'] == 'POST'){
-            $db = new Database ();
-            $connection = $db->getConnection();
-            $user = new User($connection) ;
-        
-        $email = $_POST['email'];
-        $password = new $_POST ['password'];
-
-        if($user ->login($email,$password)){
-            header("Location: homepage.php");
-            exit;
-        }else {
-            echo "Invalid login";
-        }
-    }
+          
+          include_once 'Database.php';
+          include_once 'User.php';
+     
+         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+         $db = new Database();
+         $connection = $db->getConnection();
+         $user = new User($connection);
+     
+         
+         $name = $_POST['name'];
+         $email = $_POST['email'];
+         $password = $_POST['password'];
+       
+         if ($user->register($name, $email, $password)) {
+             header("Location: login.php"); 
+             exit;
+         } else {
+             echo "Error registering user!";
+         }
+     }
+   
         ?>
 
         <h1>Login</h1>
