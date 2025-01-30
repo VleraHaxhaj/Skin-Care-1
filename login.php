@@ -51,9 +51,9 @@
         </div>
         <button type="submit" class="buton">Login</button>
         <div class="register-link">
-            <p>Don't have an account?
+            <>Don't have an account?
                 <a href="register.html">Register</a>
-            </p>
+    </p>
         </div>
     </div>
     <script src="login.js"></script>
